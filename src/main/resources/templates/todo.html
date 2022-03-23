@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/" method="post">
+        <div class="form-group">
+            <label for="name">할 일</label>
+            <input type="text" id="name" name="name" placeholder="할 일을 입력하세요">
+            <button type="submit">등록</button>
+        </div><br>
+
+    </form>
+</div>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>할 일</th>
+                <th>완료</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="memo : ${memos}">
+
+                    <td th:text="${memo.id}"></td>
+                    <td th:text="${memo.memoText}"></td>
+                    <td th:text="${memo.complete}"></td>
+                    <form th:action="@{'/delete/{id}'(id=${memo.id})}" th:method="post">
+                    <td ><input type="hidden" name="_method" value="delete"/><button type="submit">삭제</button></td>
+                    </form>
+                    <form th:action="@{'/update/{id}'(id=${memo.id})}" th:method="post">
+                        <td ><input type="hidden" name="_method" value="update"/><button type="submit">완료</button></td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
