@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 public class MemoController {
 
     private final MemoService memoService;
 
-    @Autowired
+    @Autowired //기능 익히기
     public MemoController(MemoService memoService) {
         this.memoService = memoService;
     }

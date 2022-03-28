@@ -4,12 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@ToString
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Table(name = "table_memo")
 @Entity
 public class Memo {
