@@ -3,6 +3,7 @@ package com.example.crudmySQL.controller;
 import com.example.crudmySQL.domain.Memo;
 import com.example.crudmySQL.repository.MemoRepository;
 import com.example.crudmySQL.service.MemoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +17,17 @@ import java.util.Optional;
 
 
 @Controller
+@RequiredArgsConstructor
 public class MemoController {
 
     private final MemoService memoService;
 
+/*
     @Autowired //기능 익히기
     public MemoController(MemoService memoService) {
         this.memoService = memoService;
     }
+*/
 
     @GetMapping("/")
     public String home(Model model){
