@@ -32,11 +32,19 @@ public class MemoService {
         memoRepository.deleteById(id);
     }
 
-    public String getText(Long id){
+    public String getText(Long id) throws Exception {
         Optional<Memo> memo = findOne(id);
 
-        return memo.get().getMemoText();
-    } //위험한 코드
+/*        String text = "저장된 할 일이 없습니다";
+
+        if(memo.isPresent()){
+            text = memo.get().getMemoText();
+        }
+
+        return text; //isPresent 사용
+*/
+        return memo.orElseThrow(() -> new Exception("저장된 할 일이 없습니다.")).getMemoText(); //예외처리
+    } //위험한 코드(NPE 이슈 처리 방법 익히기)
 
     public Optional<Memo> findOne(Long id){
         return memoRepository.findById(id);
